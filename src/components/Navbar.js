@@ -39,7 +39,7 @@ const Navbar = (props) => {
       <Logo to="/">Jrs.Shrooms</Logo>
       <NavLinks>
         <NavLink to="/about">About Me</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+      
         <NavLink to="/shop">Shop</NavLink>
       </NavLinks>
     </Nav>
