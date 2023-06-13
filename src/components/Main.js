@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Index from '../pages/Index'
 import About from '../pages/About'
 import Shop from "../pages/Shop";
+import Show from "../pages/Show";
 import {API_URLS} from "../urls"
 
 const Main = () => {
@@ -15,6 +16,8 @@ const Main = () => {
     const data = await response.json();
     setShrooms(data);
   };
+
+
 //creates new shroom item // make sure that the MAIN_URL is correct or present there
   const createShroom = async (shroom) => {
     await fetch(API_URLS.MAIN_URL, {
@@ -52,8 +55,7 @@ const Main = () => {
      getShrooms();
    }, []);
   
-
-  
+  //if shrooms is null, return loading... else return the app
 
     return (
       <main>
@@ -65,9 +67,14 @@ const Main = () => {
           <Route path="/about" element={<About />} />
           <Route
             path="/shop"
-            element={<Shop shrooms={shrooms} updateShroom={updateShroom} deleteShroom={deleteShroom} />}
+            element={<Shop shrooms={shrooms} />}
           />
+          <Route path="/shrooms/:id" element={<Show shrooms={shrooms} updateShroom={updateShroom} deleteShroom={deleteShroom} />} />
+
+          
+
         </Routes>
+
       </main>
     );
 }

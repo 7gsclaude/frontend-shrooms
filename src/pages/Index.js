@@ -1,12 +1,34 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import AboutComp from "../components/AboutComp";
 
+
+const ShroomDisplay = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const ShroomItem = styled.div`
+  width: 30%;
+  margin: 10px;
+  padding: 10px;
+  background-color: #fc8b9e;
+  border-radius: 5px;
+`;
+
+const ShroomImage = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+`;
 
 const Index = (props) => {
   const formFields = {
-    name: '',
-    image: '',
-    title: '',
+    name: "",
+    image: "",
+    title: "",
   };
 
   const [newForm, setNewForm] = useState(formFields);
@@ -25,14 +47,15 @@ const Index = (props) => {
   };
 
   const loaded = () => {
-    return props.shrooms.map((shroom) => (
-      <div key={shroom._id} className="shroom">
+    const limitedShrooms = props.shrooms.slice(0, 3); // Limit to first 3 items
+    return limitedShrooms.map((shroom) => (
+      <ShroomItem key={shroom._id}>
         <Link to={`/shrooms/${shroom._id}`}>
           <h1>{shroom.name}</h1>
         </Link>
-        <img src={shroom.image} alt={shroom.name} />
+        <ShroomImage src={shroom.image} alt={shroom.name} />
         <h3>{shroom.title}</h3>
-      </div>
+      </ShroomItem>
     ));
   };
 
@@ -65,7 +88,8 @@ const Index = (props) => {
         />
         <input type="submit" value="Create Shroom" />
       </form>
-      {props.shrooms ? loaded() : loading()}
+      <ShroomDisplay>{props.shrooms ? loaded() : loading()}</ShroomDisplay>
+      <AboutComp/>
     </section>
   );
 };

@@ -16,5 +16,6 @@ export const API_URLS = {
   // Add other endpoints as needed
 };
 
+
 // make sure that the url being called in the console is displaying correctly
 // seomtime the way you write shit will cause the simpleiest errors
