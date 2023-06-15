@@ -6,9 +6,10 @@ const Container = styled.div`
 `;
 
 const Block = styled.div`
-  background-color: purple;
+  background-color: #db09db;
   color: white;
   padding: 20px;
+  border-radius: 5px;
 `;
 
 const Content = styled.div`

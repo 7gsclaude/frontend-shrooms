@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import AboutComp from "../components/AboutComp";
 
+const Section = styled.div`
+  height: 100vh;
+  justify-content: center;
+  scroll-snap-align: center;
+  position: relative;
+  margin: 20px;
+
+`;
 
 const ShroomDisplay = styled.div`
   display: flex;
@@ -88,8 +96,11 @@ const Index = (props) => {
         />
         <input type="submit" value="Create Shroom" />
       </form>
-      <ShroomDisplay>{props.shrooms ? loaded() : loading()}</ShroomDisplay>
-      <AboutComp/>
+
+      <Section>
+        <ShroomDisplay>{props.shrooms ? loaded() : loading()}</ShroomDisplay>
+        <AboutComp />
+      </Section>
     </section>
   );
 };
