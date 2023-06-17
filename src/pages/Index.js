@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import AboutComp from "../components/AboutComp";
+import Contact from "../components/Contact";  // Added imports
+import FoodShowcase from "../components/FoodShowcase";
 
 const Section = styled.div`
   height: 100vh;
@@ -9,17 +11,23 @@ const Section = styled.div`
   scroll-snap-align: center;
   position: relative;
   margin: 20px;
-
 `;
+
+const AboutSection = styled.div`
+  height: 50vh;
+  justify-content: center;
+  scroll-snap-align: center;
+  margin-top: 40px;`
 
 const ShroomDisplay = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 30px; /* Added gap between items */
 `;
 
 const ShroomItem = styled.div`
-  width: 30%;
+  width: 25%;
   margin: 10px;
   padding: 10px;
   background-color: #fc8b9e;
@@ -30,6 +38,14 @@ const ShroomImage = styled.img`
   width: 100%;
   height: auto;
   border-radius: 5px;
+`;
+
+const Container = styled.div`
+  height: 50vh;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
 `;
 
 const Index = (props) => {
@@ -72,7 +88,7 @@ const Index = (props) => {
   };
 
   return (
-    <section>
+    <Section>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -98,10 +114,16 @@ const Index = (props) => {
       </form>
 
       <Section>
-        <ShroomDisplay>{props.shrooms ? loaded() : loading()}</ShroomDisplay>
-        <AboutComp />
+        <Container>
+          <ShroomDisplay>{props.shrooms ? loaded() : loading()}</ShroomDisplay>
+          <AboutSection>
+            <AboutComp style={{ marginTop: "25px" }} />
+          </AboutSection>
+          <FoodShowcase />
+          <Contact />
+        </Container>
       </Section>
-    </section>
+    </Section>
   );
 };
 
