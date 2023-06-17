@@ -22,15 +22,33 @@ const ShroomImage = styled.img`
   border-radius: 5px;
 `;
 
+  const ShroomName = styled.div`
+    font-family: "Open Sans", sans-serif;
+    font-size: 30px;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    background-color: #db09db;
+  `;
+
+  const ImageDescription = styled.h3`
+    font-family: "Open Sans", sans-serif;
+
+    align-items: center;
+    text-align: center;
+  `;
+
+
 const Shop = ({ shrooms }) => {
   const loaded = () => {
     return shrooms.map((shroom) => (
       <ShroomItem key={shroom._id}>
         <Link to={`/shrooms/${shroom._id}`}>
-          <h1>{shroom.name}</h1>
+          <ShroomName>{shroom.name}</ShroomName>
         </Link>
         <ShroomImage src={shroom.image} alt={shroom.name} />
-        <h3>{shroom.title}</h3>
+        <ImageDescription>{shroom.title}</ImageDescription>
+        <ImageDescription>{shroom.price}</ImageDescription>
       </ShroomItem>
     ));
   };

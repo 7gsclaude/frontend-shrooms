@@ -11,6 +11,8 @@ const Section = styled.div`
   scroll-snap-align: center;
   position: relative;
   margin: 20px;
+  scroll-snap-align: center;
+  
 `;
 
 const AboutSection = styled.div`
@@ -53,6 +55,7 @@ const Index = (props) => {
     name: "",
     image: "",
     title: "",
+    price: "",
   };
 
   const [newForm, setNewForm] = useState(formFields);
@@ -70,15 +73,35 @@ const Index = (props) => {
     setNewForm(formFields);
   };
 
+  const ShroomName = styled.div`
+    font-family: "Open Sans", sans-serif;
+    font-size: 30px;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    background-color: #db09db;
+
+    `
+  
+   const ImageDescription = styled.h3`
+     font-family: "Open Sans", sans-serif;
+
+     align-items: center;
+     text-align: center;
+  
+    
+   `;
+
   const loaded = () => {
     const limitedShrooms = props.shrooms.slice(0, 3); // Limit to first 3 items
     return limitedShrooms.map((shroom) => (
       <ShroomItem key={shroom._id}>
         <Link to={`/shrooms/${shroom._id}`}>
-          <h1>{shroom.name}</h1>
+          <ShroomName>{shroom.name}</ShroomName>
         </Link>
         <ShroomImage src={shroom.image} alt={shroom.name} />
-        <h3>{shroom.title}</h3>
+        <ImageDescription>{shroom.title}</ImageDescription>
+        <ImageDescription>{shroom.price}</ImageDescription>
       </ShroomItem>
     ));
   };

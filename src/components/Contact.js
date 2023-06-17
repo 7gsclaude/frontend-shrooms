@@ -11,7 +11,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-
+  scroll-snap-align: center;
 `;
 
 const Heading = styled.div`

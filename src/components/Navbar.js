@@ -6,7 +6,7 @@ const Nav = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: purple;
+  background-color: #702a70;
   padding: 10px;
 `;
 
