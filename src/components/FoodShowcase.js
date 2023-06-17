@@ -20,6 +20,8 @@ const FoodHeading = styled.div`
   border-radius: 5px;
   justify-content: center;
   align-items: center;
+    margin-bottom: 30px;
+  
 `;
 
 const FoodImage = styled.img`
