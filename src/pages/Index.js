@@ -12,7 +12,7 @@ const Section = styled.div`
   position: relative;
   margin: 20px;
   scroll-snap-align: center;
-  
+
 `;
 
 const AboutSection = styled.div`
@@ -118,6 +118,7 @@ const Index = (props) => {
           value={newForm.name}
           name="name"
           onChange={handleChange}
+          placeholder="Admin Item Creation"
         />
         <input
           type="text"
@@ -133,6 +134,14 @@ const Index = (props) => {
           placeholder="title"
           onChange={handleChange}
         />
+        <input
+          type="text"
+          value={newForm.price}
+          name="price"
+          placeholder="price"
+          onChange={handleChange}
+        />
+        
         <input type="submit" value="Create Shroom" />
       </form>
 

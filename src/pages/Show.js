@@ -42,6 +42,7 @@ const Show = ({ shrooms, updateShroom, deleteShroom }) => {
     name: "",
     image: "",
     title: "",
+    price: "",
   });
   const { id } = useParams();
   const navigate = useNavigate();
@@ -97,6 +98,14 @@ const Show = ({ shrooms, updateShroom, deleteShroom }) => {
           value={updatedShroom.title}
           onChange={handleUpdate}
         />
+        <UpdateInput
+          type="text"
+          name="price"
+          placeholder="New Price"
+          value={updatedShroom.price}
+          onChange={handleUpdate}
+        />
+        
         <SubmitButton type="submit">Update Shroom</SubmitButton>
         <SubmitButton onClick={handleDelete}>Delete Shroom</SubmitButton>
       </UpdateForm>
