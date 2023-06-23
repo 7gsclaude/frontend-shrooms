@@ -56,30 +56,37 @@ const SignUp = () => {
   const passwordConfirmRef = useRef();
   const navigate = useNavigate();
 
-  const { signUp } = useAuth();
+  const { signup, currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+ async function handleSubmit(e) {
+   e.preventDefault();
 
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Passwords do not match");
-    }
-    try {
-      setError("");
-      setLoading(true);
-      await signUp(emailRef.current.value, passwordRef.current.value);
-      navigate("/dashboard");
-    } catch {
-      setError("Failed to create an account");
-    }
-    setLoading(false);
-  }
+   if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+     return setError("Passwords do not match");
+   }
+   try {
+     setError("");
+     setLoading(true);
 
+  
+
+     await signup(emailRef.current.value, passwordRef.current.value);
+     console.log("Sign up successful");
+
+     navigate("/");
+   } catch (error) {
+     console.error("Sign up error:", error);
+     setError("Failed to create an account");
+   }
+   setLoading(false);
+ }
+console.log("Current user:", currentUser);
   return (
     <Container>
       <Title>Sign Up</Title>
+      
       {error && <ErrorMessage>{error}</ErrorMessage>}
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput type="email" ref={emailRef} placeholder="Email" required />
@@ -99,7 +106,8 @@ const SignUp = () => {
           Sign Up
         </StyledButton>
         <AlreadySignedIn>
-          Have an account with us or with Google? <Link to="/login">Log In Here</Link>
+          Have an account with us or with Google?{" "}
+          <Link to="/login">Log In Here</Link>
         </AlreadySignedIn>
       </StyledForm>
     </Container>
