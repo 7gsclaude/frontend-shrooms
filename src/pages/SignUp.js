@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../components/context/AuthContext";
-
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -12,6 +11,14 @@ const Container = styled.div`
   height: 100vh;
   width: 100%;
   background-color: blue;
+`;
+
+const AlreadySignedIn = styled.div`
+  padding: 0.5rem;
+  background-color: #a9a7a7;
+  color: black;
+  border: none;
+  cursor: pointer;
 `;
 
 const Title = styled.h2`
@@ -55,6 +62,7 @@ const SignUp = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match");
     }
@@ -90,6 +98,9 @@ const SignUp = () => {
         <StyledButton disabled={loading} type="submit">
           Sign Up
         </StyledButton>
+        <AlreadySignedIn>
+          Have an account with us or with Google? <Link to="/login">Log In Here</Link>
+        </AlreadySignedIn>
       </StyledForm>
     </Container>
   );
