@@ -41,6 +41,9 @@ const Navbar = (props) => {
         <NavLink to="/about">About Me</NavLink>
       
         <NavLink to="/shop">Shop</NavLink>
+        <NavLink to="/login">Login</NavLink>
+        <NavLink to="/signup">SignUp</NavLink>
+        <NavLink to="/logout"></NavLink>
       </NavLinks>
     </Nav>
   );

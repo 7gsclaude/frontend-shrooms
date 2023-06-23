@@ -4,6 +4,8 @@ import Index from '../pages/Index'
 import About from '../pages/About'
 import Shop from "../pages/Shop";
 import Show from "../pages/Show";
+import Login from "../pages/Login";
+import SignUp from "../pages/SignUp";
 import {API_URLS} from "../urls"
 
 const Main = () => {
@@ -70,6 +72,10 @@ const Main = () => {
             element={<Shop shrooms={shrooms} />}
           />
           <Route path="/shrooms/:id" element={<Show shrooms={shrooms} updateShroom={updateShroom} deleteShroom={deleteShroom} />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          
+          
 
           
 

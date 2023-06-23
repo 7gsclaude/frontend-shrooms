@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Main from "./components/Main";
 import styled from "styled-components";
+import { AuthProvider } from "./components/context/AuthContext";
 
 
 
@@ -22,12 +23,14 @@ const Container = styled.div`
 
 function App() {
   return (
-    <div className="App">
-      <Container>
-        <Navbar />
-        <Main />
-      </Container>
-    </div>
+    <AuthProvider>
+      <div className="App">
+        <Container>
+          <Navbar />
+          <Main />
+        </Container>
+      </div>
+    </AuthProvider>
   );
 }
 
