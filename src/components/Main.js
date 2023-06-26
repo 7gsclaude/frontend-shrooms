@@ -7,6 +7,7 @@ import Show from "../pages/Show";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import {API_URLS} from "../urls"
+import Profile from '../pages/Profile';
 
 const Main = () => {
   const [shrooms, setShrooms] = useState(null);
@@ -74,6 +75,7 @@ const Main = () => {
           <Route path="/shrooms/:id" element={<Show shrooms={shrooms} updateShroom={updateShroom} deleteShroom={deleteShroom} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/profile" element={<Profile/>} /> 
           
           
 

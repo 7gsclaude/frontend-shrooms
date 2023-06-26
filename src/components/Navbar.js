@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../components/context/AuthContext";
 
 const Nav = styled.div`
   display: flex;
@@ -34,16 +37,46 @@ const NavLink = styled(Link)`
 `;
 
 const Navbar = (props) => {
+  const { currentUser, logout } = useAuth();
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/login");
+    }
+  }, [currentUser, navigate]);
+
+  async function handleLogout() {
+    setError("");
+
+    try {
+      await logout();
+      props.history.push("/login");
+    } catch {
+      setError("Failed to log out");
+    }
+  }
+
+  if (!currentUser) {
+    return null;
+  }
+
   return (
     <Nav>
       <Logo to="/">Jrs.Shrooms</Logo>
       <NavLinks>
         <NavLink to="/about">About Me</NavLink>
-      
         <NavLink to="/shop">Shop</NavLink>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/signup">SignUp</NavLink>
-        <NavLink to="/logout"></NavLink>
+        {currentUser && (
+          <>
+            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/logout" onClick={handleLogout}>
+              LogOut
+            </NavLink>
+            {error && <p>{error}</p>}
+          </>
+        )}
       </NavLinks>
     </Nav>
   );
